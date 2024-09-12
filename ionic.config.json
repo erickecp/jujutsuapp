@@ -1,0 +1,7 @@
+{
+  "name": "JujutsuApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
