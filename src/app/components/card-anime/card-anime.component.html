@@ -1,0 +1,9 @@
+<ion-card class="card-anime">
+  <ion-button (click)="addToFavorite(animeInfo)" color="danger" class="card-fav" fill="clear">
+    <ion-icon size="large" color="danger" slot="icon-only" [name]="inFavorite(animeInfo.mal_id)"></ion-icon>
+  </ion-button>
+  <img (click)="verDetalles(animeInfo.mal_id)" class="img-anime" [src]="animeInfo.images.jpg.image_url">
+  <p class="card-title">
+    {{animeInfo.title }}
+  </p>
+</ion-card>

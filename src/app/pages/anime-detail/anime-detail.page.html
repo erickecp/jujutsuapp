@@ -1,0 +1,64 @@
+<app-header [title]="miAnime.title" [back]="true"></app-header>
+
+<ion-content [fullscreen]="true" color="dark">
+
+  <img class="poster" [src]="miAnime?.images?.jpg?.large_image_url" alt="">
+
+  <ion-grid >
+    <ion-row >
+      <ion-col size="8" class="ion-no-margin  ">
+        <ion-item color="dark">
+          {{miAnime.title}}
+        </ion-item>
+      </ion-col>
+      <ion-col size="4" >
+
+        <ion-item color="dark">
+          <ion-icon color="danger" slot="start" name="star"></ion-icon>
+          {{miAnime.score}}
+        </ion-item>
+
+      </ion-col>
+      <ion-col  size="12" >
+        <ion-item  color="dark" >
+          {{miAnime.title_japanese}}
+        </ion-item>
+      </ion-col>
+      <ion-col  size="12" >
+        @for (gen of miAnime.genres; track $index) {
+       <ion-chip color="danger"  outline="true">
+        <ion-label>{{gen.name}}</ion-label>
+       </ion-chip>
+      }
+      </ion-col>
+      <ion-col size="12">
+        <ion-item color="dark">
+          <ion-label>Sinopsis</ion-label>
+          <ion-icon (click)="verSinopsis()" slot="end" [name]="!verSinop ? 'chevron-down-outline' : 'chevron-up-outline' "></ion-icon>
+        </ion-item>
+      </ion-col>
+      @if (verSinop) {
+        <ion-col size="12">
+          <p class="ion-text-justify">
+            {{ miAnime.synopsis}}
+          </p>
+        </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
+  <ion-item-divider color="danger">
+    <ion-label color="light">Personajes</ion-label>
+  </ion-item-divider>
+    @for (p of personajes; track $index) {
+    <ion-item color="dark">
+      <ion-avatar slot="end">
+        <img [src]="p.character.images.jpg.image_url" />
+      </ion-avatar>
+      <ion-label>{{p.character.name}}</ion-label>
+    </ion-item>
+
+  }
+
+
+
+</ion-content>

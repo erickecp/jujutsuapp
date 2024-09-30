@@ -1,14 +1,25 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+import { HeaderComponent } from '../components/header/header.component';
+import { FavoritesService } from '../services/favorites.service';
+import { CardAnimeComponent } from '../components/card-anime/card-anime.component';
+import { addIcons } from 'ionicons';
+import {  heartOutline } from 'ionicons/icons';
+import { IonGrid, IonRow, IonCol, IonContent } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent],
+  imports: [IonGrid,IonRow, IonContent, IonCol, HeaderComponent,CardAnimeComponent],
 })
 export class Tab3Page {
-  constructor() {}
+  constructor(private favoriteS: FavoritesService) {
+    addIcons({heartOutline})
+    this.favorites
+  }
+
+  get favorites(){
+    return this.favoriteS.getLocalFavorites;
+  }
 }

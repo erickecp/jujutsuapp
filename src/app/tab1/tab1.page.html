@@ -1,17 +1,22 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+  <app-header title="Mas populares"></app-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" color="dark">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+ @if (load === false) {
+  <div class="ion-text-center">
+    <ion-spinner style="width: 150px !important; height: 150px !important;"
+     color="danger" name="bubbles"></ion-spinner>
+  </div>}
+  <ion-grid >
+    <ion-row>
+@for (anime of listaAnimes; track anime.mal_id) {
+      <ion-col sizeXs="6" sizeSm="3" sizeMd="3" sizeLg="2">
+       <app-card-anime [animeInfo]="anime"  ></app-card-anime>
+      </ion-col>
+    }
+    </ion-row>
+  </ion-grid>
+
+
+
 </ion-content>
